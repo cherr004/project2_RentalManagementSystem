@@ -1,0 +1,218 @@
+<!-- <link rel="stylesheet" href="/styles/jquery.datetimepicker.min.css"> -->
+
+<div class="container">
+
+  <!-- START CODING HERE -->
+
+  <!-- *************************************************************************
+  This row contains the body. All the body is  inside a jumbotron. Please refer
+  to the next comment to delete and add your code, Leave this code untouched.
+  ****************************************************************************-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
+          <!-- *************************************************
+            ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
+          ************************************************* -->
+          <h3 class="">RENTAL ORDER</h3>
+          <hr>
+          <form class="">
+            <h4>CLIENT INFORMATION:</h4>
+            <div class="text-right">
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#clientsModal" id="addClient"> <i class="far fa-id-card mr-2"></i>SELECT CLIENT</button>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Company's Name:</label>
+                <input type="text" class="form-control" id="clientCompany" placeholder="Company">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Conctact Person:</label>
+                <input type="text" class="form-control" id="clientContac" placeholder="Contact Name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Contact's Email:</label>
+                <input type="text" class="form-control" id="clientEmail" placeholder="example@domain.com">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Contact's Phone:</label>
+                <input type="text" class="form-control" id="clientPhone" placeholder="(123)456-7890">
+              </div>
+            </div>
+            <hr>
+            <h4>RENTAL DATES:</h4>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_company">Date Start:</label>
+                <input type="date" class="form-control" id="startDate" placeholder="">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_email">Date Ends:</label>
+                <input type="date" class="form-control" id="endDate" placeholder="">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_company">Total Rental Days:</label>
+                <input type="text" class="form-control" id="totalDays" placeholder="">
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-outline-danger" id="submitDates"><i class="far fa-calendar-alt mr-2"></i>APPLY DATES</button>
+            </div>
+            <hr>
+            <h4>PRODUCTS IN ORDER:</h4>
+            <div class="text-right">
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct"><i class="fas fa-cart-plus mr-2"></i>ADD PRODUCT</button>
+            </div>
+            <br>
+            <div class="table-responsive">
+              <table id="prodtucsOrder" class="table table-striped bg-light">
+                <thead>
+                  <tr>
+                    <th>Qty</th>
+                    <th>Product</th>
+                    <th>USD Price/Day</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+              </table>
+            </div>
+
+            <hr>
+            <h4 id="grandTotal">ORDER TOTAL:</h4>
+            <hr>
+            <hr>
+            <div class="text-right">
+              <button type="submit" class="btn btn-outline-dark" id="submitQuote"><i class="far fa-envelope-open mr-2"></i>SEND QUOTE</button>
+
+              <button type="submit" class="btn btn-outline-danger ml-2" id="submitOrder"><i class="far fa-money-bill-alt mr-2"></i>SUBMIT ORDER</button>
+            </div>
+          </form>
+          <!-- *******************************************************
+             YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
+          ******************************************************** -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODALS -->
+
+<!-- CLIENTS MODAL -->
+<div class="modal fade" id="clientsModal" tabindex="-1" role="dialog" aria-labelledby="clientsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientsModalTitle">CLIENT SELECTOR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="float-sm-center float-md-right">
+          <form class="form-inline">
+            <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="searchClient()" type="search" placeholder="Filter by Name or Phone Number" aria-label="Search">
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table id="clientsTbl" class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Contact Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+                {{#each clients}}
+                  <tr>
+                    <td>{{this.client_company}}</td>
+                    <td>{{this.client_name}}</td>
+                    <td>{{this.client_email}}</td>
+                    <td>{{this.client_phone}}</td>
+                    <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
+                  </tr>
+                {{/each}}
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <!-- <button id="loginBtn" type="button" class="btn btn-dark">Login</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INVENTORY MODAL -->
+<div class="modal fade" id="inventoryModal" tabindex="-1" role="dialog" aria-labelledby="inventoryModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inventoryModalTitle">PRODUCT SELECTOR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="float-sm-center float-md-right">
+          <form class="form-inline">
+            <input class="form-control mr-sm-3 mb-4" id="itemSearch" onkeyup="searchItem()" type="search" placeholder="Filter by Product Name or Category" aria-label="Search">
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table id="inventoryTbl" class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Qty</th>
+                <th>Product</th>
+                <th>Available Stock</th>
+                <th>Price/Day/USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+                {{#each inventory}}
+                  <tr>
+                    <td><input type="number" class="form-control productQty" id="test{{this.product_id}}"></td>
+                    <td>{{this.product_name}}</td>
+                    <td>{{this.available_inventory}}</td>
+                    <td>{{this.rentalPrice_day}}</td>
+                    <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
+                  </tr>
+                {{/each}}
+              </div>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <!-- <button id="loginBtn" type="button" class="btn btn-dark">CLOSE</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- **************************************************
+           EDIT TO POINT TO YOUR .JS HERE:
+*****************************************************-->
+<script src="/js/moment-with-locales.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery.datetimepicker.min.js"></script> -->
+<script type="text/javascript" src="/js/rental_new.js"></script>

@@ -1,0 +1,40 @@
+<div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="feature title-page text-left" style="padding-bottom: 10px;">
+                    <h2 class="color-a">Inventory</h2>
+                </div>
+                <!-- end build -->
+            </div>
+            <!-- end col -->
+        </div>
+        <div class="container">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Product ID#</td>
+                                <td>Product Name</td>
+                                <td>Inventory Quantity</td>
+                                <td>Available Now</td>
+                                <td>Price Per Day(PPD)</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div>
+                                {{#each inventory}}
+                                <tr>
+                                    <td>{{inventory.product_id}}</td>
+                                    <td>{{inventory.product_name}}</td>
+                                    <td>{{inventory.inventory_qty}}</td>
+                                    <td>{{inventory.available_inventory}}</td>
+                                    <td>{{inventory.product_image}}</td>
+                                    <td>{{inventory.rentalPrice_day}}</td>
+                                </tr>
+                                {{/each}}
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>

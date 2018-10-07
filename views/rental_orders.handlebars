@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
+          <h3>ORDERS LIST</h3>
+
+
+          <div class="float-sm-center float-md-right">
+            <form class="form-inline">
+              <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="search()" type="search" placeholder="Filter by Client or Order #" aria-label="Search">
+            </form>
+          </div>
+          <div class="table-responsive">
+            <table id="clientTable" class="table table-striped text-center thead-dark">
+              <thead>
+                <tr>
+                  <th>ORDER ID</th>
+                  <th>CLIENT</th>
+                  <th>DAYS</th>
+                  <th>DUE DATE</th>
+                  <th>AMOUNT</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div>
+                  {{#each rental}}
+                    <tr>
+                      <td>{{this.rental_id}}</td>
+                      <td>{{this.client_id}}</td>
+                      <td>{{this.rental_days}}</td>
+                      <td>{{this.date_finish}}</td>
+                      <td>{{this.orderTotal}}</td>
+                      <td>{{this.status}}</td>
+                      <td><a href="/order/details/{{this.rental_id}}"><button id="orderInfo" order-id="{{this.client_id}}" class="btn btn-outline-danger">MORE</button></a></td>
+                    </tr>
+                  {{/each}}
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- **************************************************
+
+           EDIT TO POINT TO YOUR .JS HERE:
+
+*****************************************************-->
+
+<script type="text/javascript" src="/js/rentalList.js"></script>

@@ -1,0 +1,5 @@
+-- DROP AND CREATE DB.
+DROP DATABASE IF EXIST rubyk_io;
+CREATE DATABASE rubyik_io;
+
+

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
+          <h3>PRODUCTS LIST</h3>
+
+          <div class="float-sm-center float-md-right">
+            <form class="form-inline">
+              <input class="form-control mr-sm-3 mb-4" id="itemSearch" onkeyup="search()" type="search" placeholder="Filter by Product Name or Category" aria-label="Search">
+            </form>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped text-center" id="inventoryTable">
+              <thead>
+                <tr>
+                  <th>PRODUCT NAME</th>
+                  <th>AVAILABLE NOW</th>
+                  <th>PRICE/DAY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div>
+                  {{#each inventory}}
+                    <tr>
+                      <td>{{this.product_name}}</td>
+                      <td>{{this.available_inventory}}</td>
+                      <td>{{this.rentalPrice_day}}</td>
+                      <td><a href="/inventory/details/{{this.product_id}}"><button id="productInfo" client-id="{{this.product_id}}" class="btn btn-outline-danger">MORE</button></a></td>
+                    </tr>
+                  {{/each}}
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- **************************************************
+           EDIT TO POINT TO YOUR .JS HERE:
+*****************************************************-->
+<script type="text/javascript" src="/js/inventory.js"></script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="/styles/bootstrap.min.css" media="screen" title="no title" charset="utf-8"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <title id="title">Home | RubykIO</title>
+</head>
+
+<body>
+  <!-- Image and text -->
+  <nav class="navbar navbar-light bg-light navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/dashboard">
+      <img src="/img/logo.png" height="95" class="d-inline-block align-top" alt="">
+    </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  btn btn-outline-danger text-red" href="#" id="loginID" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Logged in as:
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/logout">Log Out</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#contactSupport">Support</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+  </nav>
+
+  <!-- MENU: Each handlebars js needs to update the classes to display the right button. -->
+
+  <hr>
+  <div class="row mt-2 mb-2">
+    <div class="col-sm-12">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard" id="dashboardMenu">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="rental/new" id="rentalDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          RENTAL
+        </a>
+          <div class="dropdown-menu" aria-labelledby="rentalDrop">
+            <a  id="rentalNew" class="dropdown-item" href="/rental/new">NEW ORDERS</a>
+            <a class="dropdown-item" href="/rental/orders">ORDERS</a>
+            <a class="dropdown-item" href="/rental/quotes">QUOTES</a>
+            <!-- <a class="dropdown-item" href="/rental/invoices">INVOICES</a> -->
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="client/new" id="clientDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          CLIENTS
+        </a>
+          <div class="dropdown-menu" aria-labelledby="clientDrop">
+            <a class="dropdown-item" href="/client/new">NEW CLIENT</a>
+            <a class="dropdown-item" href="/client/list">CLIENT LIST</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="/inventory/new" id="inventoryDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INVENTORY
+        </a>
+          <div class="dropdown-menu" aria-labelledby="clientDrop">
+            <a class="dropdown-item" href="/inventory/new">NEW PRODUCT</a>
+            <a class="dropdown-item" href="/inventory/list">PRODUCTS LIST</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr> {{{body}}}
+
+
+
+  <!-- Modal Login-->
+  <div class="modal fade" id="contactSupport" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">CONTACT SUPPORT.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="subject">Subject:</label>
+              <select class="form-control" id="subject">
+                <option>Report Bug.</option>
+                <option>Request Help With Error.</option>
+                <option>Others.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact">Phone:</label>
+              <input type="text" class="form-control" id="contact" aria-describedby="userHelp" placeholder="Your Phone">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" rows="4"></textarea>
+              <div id="contactMsg"></div>
+          </form>
+          <div id="errorMsg" class="text-danger"> </div>
+          </div>
+          <div class="modal-footer">
+            <button id="contactBtn" type="button" class="btn btn-btn-outline-red">Send</button>
+            <button type="button" class="btn btn-outline-red" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+</body>
+
+</html>

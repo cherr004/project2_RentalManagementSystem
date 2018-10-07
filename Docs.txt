@@ -1,0 +1,22 @@
+FRONT END:
+
+    Index = Basic landing explaining the functions. Main focus is login.
+
+    RENTAL:
+      Rental = Read and show the active rentals.
+      Create = Create new rent.
+      Detail = Shows all details of rental selected.
+        Detail Optional: Delete and update buttons/functions.
+
+
+    CLIENTS:
+      Rental = Read and show the clients.
+      Create = Create new clients.
+      Detail = Shows all details of client selected.
+        Detail Optional: Delete and update buttons/functions.
+
+    INVENTORY:
+      Rental = Read and show the items you have to rent.
+      Create = Create new item and quantities.
+      Detail = Shows all details of item selected.
+        Detail Optional: Delete and update buttons/functions.
